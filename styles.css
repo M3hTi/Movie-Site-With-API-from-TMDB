@@ -141,9 +141,9 @@ main {
 }
 
 .wishlist-btn {
-    background: var(--accent-color);
+    background: transparent;  /* Changed: default background is now transparent */
     color: white;
-    border: none;
+    border: 2px solid var(--accent-color);  /* Changed: border is always visible */
     padding: 0.8rem 1.5rem;
     border-radius: 25px;
     cursor: pointer;
@@ -153,12 +153,14 @@ main {
     gap: 0.5rem;
     transform: scale(0.9);
     transition: all 0.3s ease;
-    border: 2px solid transparent;
+}
+
+.wishlist-btn.active {  /* Added: new class for active state */
+    background: var(--accent-color);
+    border-color: var(--accent-color);
 }
 
 .wishlist-btn:hover {
-    background: transparent;
-    border: 2px solid var(--accent-color);
     transform: scale(1);
 }
 
