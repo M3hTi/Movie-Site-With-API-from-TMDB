@@ -95,9 +95,11 @@ function showMovies(arr) {
             
             if (!wishListBtn.classList.contains('active')) {
                 wishList.addMovie(movie)
+                localStorage.setItem('wishList', JSON.stringify(wishList.movies))
                 wishListBtn.classList.add('active')
             } else {
                 wishList.removeMovie(movie)
+                localStorage.setItem('wishList', JSON.stringify(wishList.movies))
                 wishListBtn.classList.remove('active')
             }
             
