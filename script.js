@@ -3,6 +3,8 @@ const apiKey = 'a4feb3cb322b24cafb3f53a88b4aaeba'
 const baseUrl = 'https://api.themoviedb.org/3';
 
 const moviesGrid = document.querySelector('.movies-grid')
+const inputSearch = document.querySelector('.js-input')
+const searchBtn = document.querySelector('.js-seach-btn')
 
 const genreMap = {
     28: 'Action',
@@ -35,6 +37,12 @@ fetch(`${baseUrl}/discover/movie?api_key=${apiKey}&sort_by=vote_average.desc&vot
     console.log(data);
     const movies = data.results;
     showMovies(movies)
+    inputSearch.addEventListener('keydown', (e) => {  // Add 'e' parameter here
+        searchMovies(e, movies)
+    })
+    searchBtn.addEventListener('click', (e) => {      // Add 'e' parameter here for consistency
+        searchMovies(e, movies)
+    })
 })
 .catch(error =>{
     console.log(error);
@@ -43,6 +51,7 @@ fetch(`${baseUrl}/discover/movie?api_key=${apiKey}&sort_by=vote_average.desc&vot
 
 
 function showMovies(arr) {
+    moviesGrid.innerHTML = '';  // Clear the grid before showing new results
     arr.forEach( element => {
         const movieCard = document.createElement('div')
         movieCard.className = 'movie-card'
@@ -132,5 +141,18 @@ function showMovies(arr) {
 
     });
 
+}
+
+
+function searchMovies(e, movies) {
+    if(e.type === 'click' || e.key === 'Enter'){
+        const searchValue = inputSearch.value.toLowerCase()
+
+        // console.log(movies);
+
+        const matchesMovie = movies.filter( movie => movie.title.toLowerCase().includes(searchValue))
+        moviesGrid.innerHTML = '';  // Clear grid before showing search results
+        showMovies(matchesMovie)
+    }
 }
 
