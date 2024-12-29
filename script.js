@@ -74,6 +74,19 @@ function showMovies(arr) {
         span.textContent = 'Wishlist'
         wishListBtn.appendChild(span)
 
+        wishListBtn.addEventListener('click', () => {
+            const image = element.poster_path
+            const title = element.title
+            const rating = element.vote_average.toFixed(1)
+            const year = element.release_date.split('-')[0]
+            // Fix: Map all genre IDs to their names
+            const genres = element.genre_ids.map(id => genreMap[id])
+            const id = element.id
+
+            const movie = new Movie(image, title, rating, year, genres, id)
+            console.log(movie);
+        })
+
 
         const movieInfo = document.createElement('div')
         movieInfo.className = 'movie-info'
