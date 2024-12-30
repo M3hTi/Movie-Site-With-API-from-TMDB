@@ -1,3 +1,7 @@
+html{
+    scroll-behavior: smooth;
+}
+
 :root {
     --primary-color: #1a1a1a;
     --secondary-color: #292929;
@@ -246,6 +250,38 @@ footer {
 .duration::before {
     content: '•';
     color: var(--accent-color);
+}
+
+.scroll-top {
+    position: fixed;
+    bottom: 80px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.scroll-top:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+.scroll-top a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+}
+
+.scroll-top i {
+    font-size: 1.2rem;
 }
 
 @media (max-width: 768px) {
