@@ -83,6 +83,29 @@ function showTvShows(arr) {
         span.textContent = 'wishList';
         wishListBtn.appendChild(span);
 
+        wishListBtn.addEventListener('click', () => {
+            const image = element.poster_path
+            const name = element.name
+            const rating = element.vote_average
+            const year = element.first_air_date.split('-')[0]
+            const genres = element.genre_ids.map(id => genreMap[id])
+            const id = element.id
+
+            const tvShow = new Movie(image, name, rating, year, genres, id);
+
+            // console.log(tvShow);
+
+            if(!wishListBtn.classList.contains('active')){
+                wishList.addMovie(tvShow);
+                localStorage.setItem('wishList', JSON.stringify(wishList.movies));
+                wishListBtn.classList.add('active');
+            }else{
+                wishList.removeMovie(tvShow);
+                localStorage.setItem('wishList', JSON.stringify(wishList.movies))
+                wishListBtn.classList.remove('active');
+            }
+        })
+
         const tvShowsInfo = document.createElement('div');
         tvShowsInfo.className = 'movie-info';
         tvShowCard.appendChild(tvShowsInfo);
