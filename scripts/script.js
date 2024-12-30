@@ -24,7 +24,9 @@ const genreMap = {
     878: 'Sci-Fi',
     53: 'Thriller',
     10752: 'War',
-    37: 'Western'
+    37: 'Western',
+    10765: 'Sci-Fi & Fantasy',
+    10759: 'Action & Adventure'
 };
 
 
