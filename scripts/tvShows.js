@@ -3,6 +3,8 @@ const myApi = 'a4feb3cb322b24cafb3f53a88b4aaeba'
 const baseUrl = 'https://api.themoviedb.org/3';
 
 const grid = document.querySelector('.movies-grid');
+const inputSearch = document.querySelector('.js-input');
+const searchBtn = document.querySelector('.js-search-btn');
 
 const genreMap = {
     28: 'Action',
@@ -38,6 +40,12 @@ fetch(`${baseUrl}/discover/tv?api_key=${myApi}&sort_by=vote_average.desc&vote_co
     const tvShows = data.results;
     console.log(tvShows);
     showTvShows(tvShows);
+    inputSearch.addEventListener('keydown', (e) => {
+        searchTvShows(e, tvShows);
+    });
+    searchBtn.addEventListener('click', (e) => {
+        searchTvShows(e, tvShows);
+    });
 })
 .catch(error => {
     console.log(error);
@@ -116,4 +124,17 @@ function showTvShows(arr) {
 
 
     });
+}
+
+
+function searchTvShows(e, arr) {
+    if(e.type = 'click' || (e.type === 'keydown' && e.key === 'Enter')){
+        const searchValue = inputSearch.value.toLowerCase();
+        
+        const searchTv =  arr.filter( element => element.name.toLowerCase().includes(searchValue));
+
+        grid.innerHTML = '';
+        showTvShows(searchTv);
+    }
+    
 }
