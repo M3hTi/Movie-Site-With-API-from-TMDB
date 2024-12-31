@@ -96,10 +96,14 @@ function showMovies(arr) {
             const movie = new Movie(image, title, rating, year, genres, id)
             
             if (!wishListBtn.classList.contains('active')) {
+                const moviesList = matchWishList()
+                console.log(moviesList);
+                wishList.movies = moviesList
                 wishList.addMovie(movie)
                 localStorage.setItem('wishList', JSON.stringify(wishList.movies))
                 wishListBtn.classList.add('active')
             } else {
+                
                 wishList.removeMovie(movie)
                 localStorage.setItem('wishList', JSON.stringify(wishList.movies))
                 wishListBtn.classList.remove('active')
@@ -166,5 +170,11 @@ function searchMovies(e, movies) {
         moviesGrid.innerHTML = '';  // Clear grid before showing search results
         showMovies(matchesMovie)
     }
+}
+
+
+function matchWishList(){
+    const wishList = JSON.parse(localStorage.getItem('wishList') || '[]')
+    return wishList
 }
 

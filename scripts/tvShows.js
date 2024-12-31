@@ -96,6 +96,7 @@ function showTvShows(arr) {
             // console.log(tvShow);
 
             if(!wishListBtn.classList.contains('active')){
+                wishList.movies = matchWishList();
                 wishList.addMovie(tvShow);
                 localStorage.setItem('wishList', JSON.stringify(wishList.movies));
                 wishListBtn.classList.add('active');
@@ -160,4 +161,9 @@ function searchTvShows(e, arr) {
         showTvShows(searchTv);
     }
     
+}
+
+function matchWishList(){
+    const wishList = JSON.parse(localStorage.getItem('wishList') || '[]')
+    return wishList
 }
