@@ -1,12 +1,24 @@
 const movieGrid = document.querySelector('.movies-grid')
 const imageBaseUrl = 'https://image.tmdb.org/t/p/w500'
 
+const inputSearch = document.querySelector('.js-input')
+const searchBtn = document.querySelector('.js-seach-btn')
+
 function getWatchList() {
     let watchList = JSON.parse(localStorage.getItem('wishList'))
     if (watchList) {
         watchList = deleteDuplicateMovies(watchList)
         localStorage.setItem('wishList', JSON.stringify(watchList)) // Save deduplicated list
         showWatchList(watchList)
+
+        inputSearch.addEventListener('keydown', (e) => {
+            searchWhisListMovies(e, watchList)
+        })
+
+        searchBtn.addEventListener('click', (e) => {
+            searchWhisListMovies(e, watchList)
+        })
+
     }
 }
 
@@ -113,6 +125,16 @@ function deleteDuplicateMovies(arr) {
         }
         return false
     })
+}
+
+
+function searchWhisListMovies(e, arr){
+    if(e.type === 'click' || (e.type === 'keydown' && e.key === 'Enter')){
+        const searchValue = inputSearch.value.toLowerCase()
+        const matches = arr.filter(element => element.title.toLowerCase().includes(searchValue))
+        movieGrid.innerHTML = ''
+        showWatchList(matches)
+    }
 }
 
 window.addEventListener('load', getWatchList)
