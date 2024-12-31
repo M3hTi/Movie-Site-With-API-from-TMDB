@@ -2,16 +2,13 @@ const movieGrid = document.querySelector('.movies-grid')
 const imageBaseUrl = 'https://image.tmdb.org/t/p/w500'
 
 function getWatchList() {
-    const watchList = JSON.parse(localStorage.getItem('wishList'))
-
-
-    console.log(watchList);
-
-
-    showWatchList(watchList)
-
+    let watchList = JSON.parse(localStorage.getItem('wishList'))
+    if (watchList) {
+        watchList = deleteDuplicateMovies(watchList)
+        localStorage.setItem('wishList', JSON.stringify(watchList)) // Save deduplicated list
+        showWatchList(watchList)
+    }
 }
-
 
 function showWatchList(arr) {
 
@@ -104,6 +101,18 @@ function showWatchList(arr) {
 
     });
 
+}
+
+function deleteDuplicateMovies(arr) {
+    // Use filter with Set to keep only unique movies based on ID
+    const uniqueIds = new Set()
+    return arr.filter(movie => {
+        if (!uniqueIds.has(movie.id)) {
+            uniqueIds.add(movie.id)
+            return true
+        }
+        return false
+    })
 }
 
 window.addEventListener('load', getWatchList)
