@@ -1,6 +1,6 @@
 # MovieFlix 🎬
 
-A modern responsive web application for browsing movies and TV shows, built with vanilla JavaScript and the TMDB API. Features a clean interface, search functionality, and wishlist management.
+A dynamic movie and TV show browsing application built with vanilla JavaScript, featuring a wishlist system and responsive design.
 
 ## Live Demo 🌐
 [View Live Demo](#) <!-- Add your deployment URL -->
@@ -9,30 +9,34 @@ A modern responsive web application for browsing movies and TV shows, built with
 
 ## Features ✨
 
-### Core Functionality
-- Browse popular movies and TV shows
-- Advanced search functionality
-- Persistent wishlist system
-- Duplicate prevention in wishlist
-- Responsive design for all devices
+### Movie & TV Show Browsing
+- Browse top-rated movies and TV shows
+- Real-time search functionality
+- Dynamic genre tagging
+- Rating system with visual indicators
+- Release year information
+
+### Smart Wishlist System
+- Add movies and TV shows to wishlist
+- Persistent storage using localStorage
+- Automatic duplicate prevention
+- Cross-section wishlist functionality
+- Search within wishlist items
 
 ### User Interface
-- Clean, modern design
-- Smooth animations and transitions
-- Genre categorization with tags
-- Rating and release year display
-- Back-to-top functionality
-- Loading states and error handling
+- Clean, modern responsive design
+- Smooth hover animations
+- Active state indicators
+- Back-to-top navigation
+- Consistent styling across pages
 
-## Technologies Used 🛠️
+## Tech Stack 🛠️
 
-- HTML5 & CSS3
 - Vanilla JavaScript (ES6+)
-- TMDB API Integration
-- Local Storage
+- HTML5 & CSS3
+- TMDB API
+- LocalStorage API
 - Font Awesome Icons
-- CSS Custom Properties
-- CSS Grid & Flexbox
 
 ## Getting Started 🚀
 
@@ -58,43 +62,39 @@ git clone https://github.com/yourusername/MovieFlix.git
 
 ```
 MovieFlix/
-├── images/
-│   └── logo.jpg
-├── pages/
-│   ├── tvShows.html    # TV shows page
-│   └── watchList.html  # Wishlist management
 ├── scripts/
-│   ├── config.js      # API configuration
-│   ├── objects.js     # Classes and objects
-│   ├── script.js      # Main JavaScript
-│   ├── tvShows.js     # TV shows logic
-│   └── watchList.js   # Wishlist logic
+│   ├── script.js      # Main movie functionality
+│   ├── tvShows.js     # TV shows handling
+│   ├── watchList.js   # Wishlist management
+│   └── objects.js     # Shared objects & classes
 ├── styles/
-│   └── styles.css     # Main stylesheet
-└── index.html         # Entry point
+│   └── styles.css     # Global styles
+└── pages/
+    ├── tvShows.html   # TV shows page
+    └── watchList.html # Wishlist page
 ```
 
-## Features in Detail 🔍
+## Key Features Explained 🔍
 
 ### Movies & TV Shows
-- View popular and trending content
-- Detailed information display
-- Dynamic genre tags
-- Rating system with star display
-- Release year information
+- Fetches top-rated content from TMDB API
+- Dynamic card generation with hover effects
+- Genre mapping and display
+- Rating display with star icons
+- Smooth transitions and animations
 
-### Search System
-- Real-time search functionality
-- Search in movies and TV shows
-- Clean results display
-- Error handling for no results
-
-### Wishlist
-- Add/remove items
+### Wishlist System
+- Cross-section wishlist (movies & TV shows)
+- Duplicate entry prevention
 - Persistent storage
-- Duplicate prevention
+- Active state synchronization
+- Easy add/remove functionality
+
+### Search Features
+- Real-time search in movies
+- Real-time search in TV shows
 - Search within wishlist
-- Clean wishlist management
+- Clear results display
 
 ## Browser Support 🌐
 
@@ -113,19 +113,17 @@ MovieFlix/
 
 ## Future Enhancements 🚀
 
-- [ ] Advanced filtering options
+- [ ] Sorting functionality
+- [ ] Advanced filtering
+- [ ] Movie details page
 - [ ] User authentication
-- [ ] Movie/Show details page
-- [ ] Trailer integration
-- [ ] User ratings and reviews
-- [ ] Social sharing functionality
+- [ ] Personal ratings
 
-## License 📝
+## License 📄
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
 
-## Acknowledgments 👏
+## Credits 👏
 
-- [TMDB](https://www.themoviedb.org/) for their comprehensive API
-- [Font Awesome](https://fontawesome.com/) for the icons
-- All contributors and supporters
+- TMDB API for movie data
+- Font Awesome for icons
