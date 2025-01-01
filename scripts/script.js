@@ -97,19 +97,17 @@ function showMovies(arr) {
             
             if (!wishListBtn.classList.contains('active')) {
                 const moviesList = matchWishList()
-                console.log(moviesList);
                 wishList.movies = moviesList
                 wishList.addMovie(movie)
                 localStorage.setItem('wishList', JSON.stringify(wishList.movies))
                 wishListBtn.classList.add('active')
             } else {
-                
+                const moviesList = matchWishList()  // Add this line
+                wishList.movies = moviesList        // Add this line
                 wishList.removeMovie(movie)
                 localStorage.setItem('wishList', JSON.stringify(wishList.movies))
                 wishListBtn.classList.remove('active')
             }
-            
-            // console.log(wishList.movies)
         })
 
 
@@ -155,7 +153,9 @@ function showMovies(arr) {
             genres.appendChild(genre)
         });
 
-    });
+    })
+
+    syncWishList(arr)
 
 }
 
@@ -176,5 +176,26 @@ function searchMovies(e, movies) {
 function matchWishList(){
     const wishList = JSON.parse(localStorage.getItem('wishList') || '[]')
     return wishList
+}
+
+
+function syncWishList(arr){
+    const watchList = matchWishList()
+
+    const movieCards = document.querySelectorAll('.movie-card')
+
+    movieCards.forEach( (card,index) => {
+        const currentMovie = arr[index]
+
+        // console.log(currentMovie);
+
+        const isInWishList = watchList.some( movie => movie.id === currentMovie.id)
+
+        if(isInWishList){
+            const overlay = card.querySelector('.overlay')
+            const wishListBtn = overlay.querySelector('.wishlist-btn')
+            wishListBtn.classList.add('active')
+        }
+    })
 }
 

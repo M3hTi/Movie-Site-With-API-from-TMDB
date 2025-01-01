@@ -101,6 +101,8 @@ function showTvShows(arr) {
                 localStorage.setItem('wishList', JSON.stringify(wishList.movies));
                 wishListBtn.classList.add('active');
             }else{
+                const moviesList = matchWishList()  // Add this line
+                wishList.movies = moviesList        // Add this line
                 wishList.removeMovie(tvShow);
                 localStorage.setItem('wishList', JSON.stringify(wishList.movies))
                 wishListBtn.classList.remove('active');
@@ -145,7 +147,7 @@ function showTvShows(arr) {
             genresShows.appendChild(genre);
         });
 
-
+        syncWishList(arr);
 
     });
 }
@@ -166,4 +168,22 @@ function searchTvShows(e, arr) {
 function matchWishList(){
     const wishList = JSON.parse(localStorage.getItem('wishList') || '[]')
     return wishList
+}
+
+
+function syncWishList(arr) {
+    const watchList = matchWishList();
+
+    const movieCards = document.querySelectorAll('.movie-card')
+
+
+    movieCards.forEach((card,index) => {
+        const currentMovie = arr[index];
+
+        const isInWishLIst = watchList.some(movie => movie.id === currentMovie.id);
+
+        if(isInWishLIst){
+            card.querySelector('.wishlist-btn').classList.add('active');
+        }
+    });
 }
