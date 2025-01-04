@@ -1,10 +1,9 @@
-const wishList = {
+export const wishList = {
     movies: [],
     addMovie: function(obj) {
         this.movies.push(obj)
     },
     removeMovie: function(obj) {
-        // Find index of movie with matching ID instead of using direct indexOf
         const index = this.movies.findIndex(movie => movie.id === obj.id)
         if (index !== -1) {
             this.movies.splice(index, 1)
@@ -12,7 +11,7 @@ const wishList = {
     }
 }
 
-function Movie (image, title, rating, year, genres, id) {
+export function Movie(image, title, rating, year, genres, id) {
     this.image = image
     this.title = title
     this.rating = rating

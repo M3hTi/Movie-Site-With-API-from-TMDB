@@ -1,5 +1,8 @@
+import config from './config.js';
+
+const { imageBaseUrl } = config;
+
 const movieGrid = document.querySelector('.movies-grid')
-const imageBaseUrl = 'https://image.tmdb.org/t/p/w500'
 
 const inputSearch = document.querySelector('.js-input')
 const searchBtn = document.querySelector('.js-seach-btn')
@@ -23,7 +26,12 @@ function getWatchList() {
 }
 
 function showWatchList(arr) {
+    // if (!arr || arr.length === 0) {
+    //     movieGrid.innerHTML = '<div class="empty-state">No items in wishlist</div>';
+    //     return;
+    // }
 
+    movieGrid.innerHTML = '';
     arr.forEach(element => {
         const movieCard = document.createElement('div')
         movieCard.className = 'movie-card'
@@ -105,11 +113,14 @@ function showWatchList(arr) {
         movieTags.className = 'genre-tags'
         movieInfo.appendChild(movieTags)
 
-        element.genres.forEach(genre => {
-            const tag = document.createElement('span')
-            tag.textContent = genre
-            movieTags.appendChild(tag)
-        })
+        // Fix genres display
+        if (Array.isArray(element.genres)) {
+            element.genres.forEach(genre => {
+                const tag = document.createElement('span')
+                tag.textContent = genre
+                movieTags.appendChild(tag)
+            })
+        }
 
     });
 

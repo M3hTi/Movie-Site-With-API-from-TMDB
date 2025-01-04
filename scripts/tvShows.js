@@ -1,6 +1,7 @@
-const myApi = 'a4feb3cb322b24cafb3f53a88b4aaeba'
+import config from './config.js';
+import { Movie, wishList } from './objects.js';
 
-const baseUrl = 'https://api.themoviedb.org/3';
+const { apiKey, baseUrl, imageBaseUrl } = config;
 
 const grid = document.querySelector('.movies-grid');
 const inputSearch = document.querySelector('.js-input');
@@ -30,7 +31,7 @@ const genreMap = {
 };
 
 
-fetch(`${baseUrl}/discover/tv?api_key=${myApi}&sort_by=vote_average.desc&vote_count.gte=100`)
+fetch(`${baseUrl}/discover/tv?api_key=${apiKey}&sort_by=vote_average.desc&vote_count.gte=100`)
 .then(response => {
     if(!response.ok) throw new Error(`status : ${response.status}`);
     return response.json();
@@ -64,7 +65,7 @@ function showTvShows(arr) {
         tvShowCard.appendChild(tvShowPoster);
 
         const poster = document.createElement('img');
-        poster.src = `https://image.tmdb.org/t/p/w500${element.poster_path}`;
+        poster.src = `${imageBaseUrl}${element.poster_path}`;
         tvShowPoster.appendChild(poster);
 
         const overlay = document.createElement('div');

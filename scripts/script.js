@@ -1,6 +1,7 @@
-const apiKey = 'a4feb3cb322b24cafb3f53a88b4aaeba'
+import config from './config.js';
+import { Movie, wishList } from './objects.js';
 
-const baseUrl = 'https://api.themoviedb.org/3';
+const { apiKey, baseUrl, imageBaseUrl } = config;
 
 const moviesGrid = document.querySelector('.movies-grid')
 const inputSearch = document.querySelector('.js-input')

@@ -1,129 +1,121 @@
 # MovieFlix 🎬
 
-A dynamic movie and TV show browsing application built with vanilla JavaScript, featuring a wishlist system and responsive design.
-
-## Live Demo 🌐
-[View Live Demo](#) <!-- Add your deployment URL -->
+A dynamic movie and TV show browsing application built with vanilla JavaScript and ES6 modules, featuring a smart wishlist system and real-time search functionality.
 
 ![MovieFlix Screenshot](images/screenshot.png)
 
 ## Features ✨
 
-### Movie & TV Show Browsing
+### Core Features
 - Browse top-rated movies and TV shows
-- Real-time search functionality
-- Dynamic genre tagging
-- Rating system with visual indicators
-- Release year information
+- Real-time search across all content
+- Smart wishlist with duplicate prevention
+- Cross-platform persistent storage
+- Responsive modern design
 
-### Smart Wishlist System
-- Add movies and TV shows to wishlist
-- Persistent storage using localStorage
-- Automatic duplicate prevention
-- Cross-section wishlist functionality
-- Search within wishlist items
+### Technical Features
+- ES6 Modules architecture
+- Local Storage management
+- TMDB API integration
+- Dynamic content loading
+- Modular component structure
 
-### User Interface
-- Clean, modern responsive design
-- Smooth hover animations
-- Active state indicators
-- Back-to-top navigation
-- Consistent styling across pages
+## Setup Guide 🚀
 
-## Tech Stack 🛠️
-
-- Vanilla JavaScript (ES6+)
-- HTML5 & CSS3
-- TMDB API
-- LocalStorage API
-- Font Awesome Icons
-
-## Getting Started 🚀
-
-1. Clone the repository:
+1. Clone the repository
 ```bash
 git clone https://github.com/yourusername/MovieFlix.git
 ```
 
-2. Get TMDB API Key:
-- Visit [TMDB Website](https://www.themoviedb.org/)
-- Create an account and request an API key
-- Copy your API key
+2. Configure API Key:
+- Copy `config.example.js` to `config.js`:
+```bash
+cp scripts/config.example.js scripts/config.js
+```
+- Add your TMDB API key in `config.js`:
+```javascript
+const config = {
+    apiKey: 'your_tmdb_api_key_here',
+    baseUrl: 'https://api.themoviedb.org/3',
+    imageBaseUrl: 'https://image.tmdb.org/t/p/w500'
+};
+```
 
-3. Add API Key:
-- Navigate to `scripts/config.js`
-- Replace `your_api_key_here` with your TMDB API key
-
-4. Run the application:
-- Open `index.html` in your browser
-- Or use a local server: `npx http-server`
+3. Serve the project:
+- Use a local server (due to ES6 modules)
+- Example using Python:
+```bash
+python -m http.server 8000
+```
+- Or using Node.js:
+```bash
+npx http-server
+```
 
 ## Project Structure 📁
 
 ```
 MovieFlix/
 ├── scripts/
-│   ├── script.js      # Main movie functionality
-│   ├── tvShows.js     # TV shows handling
-│   ├── watchList.js   # Wishlist management
-│   └── objects.js     # Shared objects & classes
+│   ├── config.js         # API configuration (gitignored)
+│   ├── config.example.js # Example config template
+│   ├── objects.js        # Shared classes and objects
+│   ├── script.js         # Main movies logic
+│   ├── tvShows.js       # TV shows functionality
+│   └── watchList.js     # Wishlist management
 ├── styles/
-│   └── styles.css     # Global styles
+│   └── styles.css       # Global styles
 └── pages/
-    ├── tvShows.html   # TV shows page
-    └── watchList.html # Wishlist page
+    ├── tvShows.html    # TV shows page
+    └── watchList.html  # Wishlist page
 ```
 
-## Key Features Explained 🔍
+## Implementation Details 🔧
 
-### Movies & TV Shows
-- Fetches top-rated content from TMDB API
-- Dynamic card generation with hover effects
-- Genre mapping and display
-- Rating display with star icons
-- Smooth transitions and animations
+### Module System
+- ES6 modules for code organization
+- Shared configuration management
+- Cross-component communication
 
 ### Wishlist System
-- Cross-section wishlist (movies & TV shows)
-- Duplicate entry prevention
-- Persistent storage
-- Active state synchronization
-- Easy add/remove functionality
+- LocalStorage persistence
+- Automatic duplicate prevention
+- Cross-section compatibility
+- Real-time sync across pages
 
-### Search Features
-- Real-time search in movies
-- Real-time search in TV shows
-- Search within wishlist
-- Clear results display
+### Search System
+- Real-time filtering
+- Case-insensitive search
+- Cross-section search support
+- Dynamic results display
 
-## Browser Support 🌐
+## Security 🔒
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
+- API key protection through gitignore
+- Configuration file separation
+- Secure module imports
+- Example configuration template
+
+## Browser Compatibility 🌐
+
+- Requires ES6 module support
+- Modern browser compatibility
+- Local server requirement
+- Responsive design support
 
 ## Contributing 🤝
 
 1. Fork the repository
-2. Create your feature branch: `git checkout -b feature/NewFeature`
-3. Commit your changes: `git commit -m 'Add NewFeature'`
-4. Push to the branch: `git push origin feature/NewFeature`
-5. Submit a pull request
-
-## Future Enhancements 🚀
-
-- [ ] Sorting functionality
-- [ ] Advanced filtering
-- [ ] Movie details page
-- [ ] User authentication
-- [ ] Personal ratings
+2. Copy and configure `config.js`
+3. Make your changes
+4. Submit a pull request
 
 ## License 📄
 
-This project is licensed under the MIT License.
+MIT License - See LICENSE file
 
-## Credits 👏
+## Acknowledgments 👏
 
-- TMDB API for movie data
-- Font Awesome for icons
+- TMDB API
+- Font Awesome
+- ES6 Modules

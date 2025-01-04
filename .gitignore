@@ -2,5 +2,7 @@ package.json
 package-lock.json
 node_modules/
 images/
+scripts/config.js
+.DS_Store
 
 
