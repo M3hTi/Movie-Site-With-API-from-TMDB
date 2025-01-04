@@ -2,7 +2,7 @@
 
 A dynamic movie and TV show browsing application built with vanilla JavaScript and ES6 modules, featuring a smart wishlist system and real-time search functionality.
 
-![MovieFlix Screenshot](images/screenshot.png)
+![MovieFlix Screenshot](/screenshot.png)
 
 ## Features ✨
 
